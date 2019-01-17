@@ -7,8 +7,7 @@ before_install:
   - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu bionic-security main'
   - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu bionic-updates main'
   - sudo apt-get update
-  - cat /etc/apt/sources.list
-  - sudo apt-get install -y libarmadillo-dev python3 python3-pybind11 pybind11-dev qt5-default
+  - sudo apt-get install -y python3-pybind11 pybind11-dev qt5-default libarmadillo-dev python3 
 
 compiler:
   - gcc
