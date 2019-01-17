@@ -1,16 +1,13 @@
 language: cpp
 
-before_install:
-  - sudo apt-get install -y libarmadillo-dev python3 python3-pybind11 pybind11-dev qt5-default
+dist: bionic
 
-addons:
-  apt:
-    sources: debian-sid
-    update: true
+before_install:
+  - sudo apt-
+  - sudo apt-get install -y libarmadillo-dev python3 python3-pybind11 pybind11-dev qt5-default
 
 compiler:
   - gcc
-  - clang
 
 before_script:
   - mkdir build
