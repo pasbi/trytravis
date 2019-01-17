@@ -3,7 +3,9 @@ language: cpp
 dist: xenial
 
 before_install:
-  - echo 'deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ bionic multiverse' | tee --append /etc/apt/sources.list
+  - sudo add-apt-repository deb http://archive.ubuntu.com/ubuntu bionic main
+  - sudo add-apt-repository deb http://archive.ubuntu.com/ubuntu bionic-security main
+  - sudo add-apt-repository deb http://archive.ubuntu.com/ubuntu bionic-updates main
   - cat /etc/apt/sources.list
   - sudo apt-get install -y libarmadillo-dev python3 python3-pybind11 pybind11-dev qt5-default
 
