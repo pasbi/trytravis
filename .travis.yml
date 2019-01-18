@@ -3,23 +3,16 @@ language: cpp
 dist: xenial
 
 before_install:
-  - ls
-  - ls src
   - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu bionic main'
   - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu bionic universe'
   - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu bionic multiverse'
   - sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu bionic restricted'
   - sudo apt-get update
-  - sudo apt-get install -y python3-pybind11 pybind11-dev qt5-default libarmadillo-dev python3 
+  - sudo apt-get install -y python3-pybind11 pybind11-dev libarmadillo-dev python3
+  - sudo apt-get install -y qtbase5-dev qt5-default
 
 compiler:
   - gcc
 
-before_script:
-  - cd src
-  - mkdir build
-  - cd build
-  - cmake ..
-
 script:
-  - make
+  - echo "installation done."
