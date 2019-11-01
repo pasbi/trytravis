@@ -1,6 +1,8 @@
 compiler: gcc
 sudo: require
-dist: xenial
+dist:
+  - xenial
+  - bionic
 
 before_install:
   - echo "before install"
@@ -8,7 +10,7 @@ before_install:
 
 install:
   - echo "install"
-  - sudo apt install ninja
+  - sudo apt install ninja-build
 
 after_install:
   - echo "after install"
