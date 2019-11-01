@@ -4,11 +4,11 @@ dist: xenial
 
 before_install:
   - echo "before install"
-  - apt update
+  - sudo apt update
 
 install:
   - echo "install"
-  - apt install ninja
+  - sudo apt install ninja
 
 after_install:
   - echo "after install"
