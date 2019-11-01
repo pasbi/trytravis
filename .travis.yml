@@ -14,7 +14,16 @@ after_install:
   - echo "after install"
 
 script:
-  - cmake .. -G"Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++ -DQT_QM_PATH=/opt/qt512/translations -DCMAKE_PREFIX_PATH=/opt/qt512 -DCMAKE_INSTALL_PREFIX=/usr 
+  - mkdir build
+  - cd build
+  - |
+    cmake -G"Ninja" \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_CXX_COMPILER=g++ \
+          -DQT_QM_PATH=/opt/qt512/translations \
+          -DCMAKE_PREFIX_PATH=/opt/qt512 \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          ..
   - ninja 
 
 branches:
