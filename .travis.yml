@@ -1,6 +1,12 @@
 compiler: gcc
 sudo: require
-dist: xenial
+dist:
+  - xenial
+  - bionic
+  
+os:
+  - linux
+  - windows
 
 before_install:
   - echo "before install"
