@@ -5,10 +5,20 @@ dist: xenial
 before_install:
   - echo "before install"
   - sudo apt update
+  - sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-xenial
+  - sudo apt-get update -qq
 
 install:
   - echo "install"
   - sudo apt install ninja-build
+  - sudo apt-get install -y zlib1g-dev libssl-dev libffi-dev
+                            qt512tools qt512translations qt512svg qt512base
+                            qt512imageformats libgl-dev python3-dev
+                            libpoppler-qt5-dev g++-8 libkf5itemmodels-dev
+                            
+  - wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
+  - tar xf cmake-3.14.5-Linux-x86_64.tar.gz
+  - cmake_3_14=$(pwd)/cmake-3.14.5-Linux-x86_64/bin/cmake
 
 after_install:
   - echo "after install"
@@ -16,13 +26,13 @@ after_install:
 script:
   - mkdir build
   - cd build
-  - cmake -G"Ninja"
-          -DCMAKE_BUILD_TYPE=Release
-          -DCMAKE_CXX_COMPILER=g++
-          -DQT_QM_PATH=/opt/qt512/translations
-          -DCMAKE_PREFIX_PATH=/opt/qt512
-          -DCMAKE_INSTALL_PREFIX=/usr
-          ..
+  - $cmake_3_14 -G"Ninja"
+                -DCMAKE_BUILD_TYPE=Release
+                -DCMAKE_CXX_COMPILER=g++
+                -DQT_QM_PATH=/opt/qt512/translations
+                -DCMAKE_PREFIX_PATH=/opt/qt512
+                -DCMAKE_INSTALL_PREFIX=/usr
+                ..
   - ninja 
 
 branches:
