@@ -4,8 +4,9 @@ dist: xenial
 
 before_install:
   - echo "before install"
-  - sudo apt update
+  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-xenial
+  - sudo apt update
   - sudo apt-get update -qq
 
 install:
