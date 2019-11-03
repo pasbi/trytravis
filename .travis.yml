@@ -7,9 +7,10 @@ jobs:
       dist: xenial
     - os: linux
       dist: bionic
+    - os: windows
 
 before_install:
-  - echo "before install"
+  - echo "before install $TRAVIS_DIST -- $TRAVIS_OS_NAME"
   - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-xenial
   - sudo apt update
