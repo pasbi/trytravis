@@ -12,8 +12,7 @@ echo "installing dependencies ..."
 sudo dpkg --list
 sudo apt-get clean
 sudo apt update -y
-sudo apt remove mysql-server mysql-client libmysqlclient20:i386 libmysqlclient20:amd64 \
-                libmysqlclient18:amd64 mysql-common mysql
+sudo apt remove mysql-client-5.7 mysql-server-5.7
 sudo apt upgrade -y
 # sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
 #                     libgl-dev python3-dev
