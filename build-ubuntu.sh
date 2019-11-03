@@ -39,7 +39,7 @@ case "$dist" in
 
   mkdir -p $pybind11_DIR/build
   pushd $pybind11_DIR/build
-  $cmake_3_14 ..
+  $cmake ..
   sudo make install
   popd
 
