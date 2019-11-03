@@ -9,14 +9,12 @@ repo="$(basename -s .git `git config --get remote.origin.url`)"
 echo "Build $repo on Ubuntu $dist".
 
 echo "installing dependencies ..."
-sudo dpkg --list
 sudo apt-get clean
 sudo apt update -y
 sudo apt remove mysql-client-5.7 mysql-server-5.7
 sudo apt upgrade -y
 sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
                     libgl-dev python3-dev
-echo -e "XXXX\nXXXX\nXXXX\nXXXX\nXXXX\nXXXX\nXXXX\nXXXX\n"
 case "$dist" in
 "xenial" | "bionic")
   sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
@@ -34,8 +32,7 @@ case "$dist" in
   popd
 
   # pytest is required to build pybind11
-  sudo apt install -y python3-pip
-  sudo pip3 install pytest
+  sudo python3.7 -m pip3 install pytest
 
   CXX_COMPILER=g++-8
   C_COMPILER=gcc-8
