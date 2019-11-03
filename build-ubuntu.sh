@@ -29,7 +29,7 @@ case "$dist" in
   CXX_COMPILER=g++-8
   C_COMPILER=gcc-8
   QT_PREFIX="/opt/qt512"
-  QT_QM_PATH="/usr/share/qt5/translations/"
+  QT_QM_PATH="/opt/qt512/translations/"
 
   # Download cmake binaries
   wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
