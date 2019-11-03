@@ -38,7 +38,7 @@ case "$dist" in
   popd
 
   # pytest is required to build pybind11
-  sudo python3.7 -m pip3 install pytest
+  sudo python3.7 -m pip install pytest
 
   # Download cmake binaries
   wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
