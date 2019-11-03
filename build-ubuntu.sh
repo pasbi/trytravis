@@ -28,7 +28,7 @@ case "$dist" in
   QT_QM_PATH="/usr/share/qt5/translations/"
   ;;
  "disco" | "eaon")
-  sudo apt install -y g++
+  sudo apt install -y g++ gcc
   sudo apt install -y qtbase5-dev qtchooser qt5-qmake \
                       qtbase5-dev-tools qt5-default \
                       libqt5svg5-dev qttools5-dev \
