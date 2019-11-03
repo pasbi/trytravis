@@ -9,7 +9,15 @@ repo="$(basename -s .git `git config --get remote.origin.url`)"
 echo "Build $repo on Ubuntu $dist".
 
 echo "installing dependencies ..."
+sudo apt-get clean
 sudo apt update -y
+sudo dpkg -r mysql-client-5.7
+sudo dpkg -r mysql-server-5.7
+sudo dpkg -r libmysqlclient20:i386
+sudo dpkg -r libmysqlclient20:amd64
+sudo dpkg -r libmysqlclient18:amd64
+sudo dpkg -r mysql-common
+sudo dpkg -r mysql
 sudo apt upgrade -y
 # sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
 #                     libgl-dev python3-dev
