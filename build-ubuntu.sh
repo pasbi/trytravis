@@ -9,6 +9,7 @@ repo="$(basename -s .git `git config --get remote.origin.url`)"
 echo "Build $repo on Ubuntu $dist".
 
 echo "installing dependencies ..."
+sudo dpkg --list
 sudo apt-get clean
 sudo apt update -y
 sudo apt remove mysql-server mysql-client libmysqlclient20:i386 libmysqlclient20:amd64 \
