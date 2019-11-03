@@ -26,6 +26,13 @@ case "$dist" in
   sudo apt install -y qt512tools qt512translations qt512svg \
                       qt512base qt512imageformats
 
+  wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+  tar xf Python-3.7.0.tar.xz
+  pushd Python-3.7.0
+  ./configure --prefix=/usr
+  sudo make altinstall -j2
+  popd
+
   # pytest is required to build pybind11
   sudo apt install -y python3-pip
   sudo pip3 install pytest
