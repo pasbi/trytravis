@@ -31,6 +31,17 @@ case "$dist" in
   wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
   tar xf cmake-3.14.5-Linux-x86_64.tar.gz
   cmake=$(pwd)/cmake-3.14.5-Linux-x86_64/bin/cmake
+
+  wget https://github.com/pybind/pybind11/archive/v${PYBIND11_VERSION}.tar.gz
+  tar xf v${PYBIND11_VERSION}.tar.gz
+  pybind11_DIR=pybind11-${PYBIND11_VERSION}
+
+  mkdir -p $pybind11_DIR/build
+  pushd $pybind11_DIR/build
+  $cmake_3_14 ..
+  sudo make install
+  popd
+
   ;;
 "disco" | "eoan")
   sudo apt install -y g++ gcc pybind11-dev cmake
