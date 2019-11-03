@@ -27,7 +27,7 @@ case "$dist" in
   QT_PREFIX="/opt/qt512"
   QT_QM_PATH="/usr/share/qt5/translations/"
   ;;
- "disco" | "eaon")
+ "disco" | "eoan")
   sudo apt install -y g++ gcc
   sudo apt install -y qtbase5-dev qtchooser qt5-qmake \
                       qtbase5-dev-tools qt5-default \
