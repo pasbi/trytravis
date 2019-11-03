@@ -23,6 +23,12 @@ case "$dist" in
   sudo apt install -y g++-8
   sudo apt install -y qt512tools qt512translations qt512svg \
                       qt512base qt512imageformats
+  sudo apt install -y python3-pip
+
+  CXX_COMPILER=g++-8
+  C_COMPILER=gcc-8
+  QT_PREFIX="/opt/qt512"
+  QT_QM_PATH="/opt/qt512/translations/"
 
   wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
   tar xf Python-3.7.0.tar.xz
@@ -33,11 +39,6 @@ case "$dist" in
 
   # pytest is required to build pybind11
   sudo python3.7 -m pip3 install pytest
-
-  CXX_COMPILER=g++-8
-  C_COMPILER=gcc-8
-  QT_PREFIX="/opt/qt512"
-  QT_QM_PATH="/opt/qt512/translations/"
 
   # Download cmake binaries
   wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
