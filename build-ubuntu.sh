@@ -11,8 +11,8 @@ echo "Build $repo on Ubuntu $dist".
 echo "installing dependencies ..."
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
-                    libgl-dev python3-dev
+# sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
+#                     libgl-dev python3-dev
 case "$dist" in
 "xenial" | "bionic")
   # sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
