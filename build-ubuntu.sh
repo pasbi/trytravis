@@ -15,10 +15,10 @@ sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
                     libgl-dev python3-dev
 case "$dist" in
 "xenial" | "bionic")
-  sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
-  sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-"$dist"
-  sudo apt update -y
-  sudo apt install -y g++-8
+  # sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
+  # sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-"$dist"
+  # sudo apt update -y
+  # sudo apt install -y g++-8
   # sudo apt install -y qt512tools qt512translations qt512svg \
   #                     qt512base qt512imageformats
 
