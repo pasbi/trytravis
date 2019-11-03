@@ -22,6 +22,10 @@ case "$dist" in
   sudo apt install -y qt512tools qt512translations qt512svg \
                       qt512base qt512imageformats
 
+  # pytest is required to build pybind11
+  sudo apt install -y python3-pip
+  sudo pip3 install pytest
+
   CXX_COMPILER=g++-8
   C_COMPILER=gcc-8
   QT_PREFIX="/opt/qt512"
