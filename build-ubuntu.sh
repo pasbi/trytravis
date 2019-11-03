@@ -32,6 +32,7 @@ case "$dist" in
   tar xf cmake-3.14.5-Linux-x86_64.tar.gz
   cmake=$(pwd)/cmake-3.14.5-Linux-x86_64/bin/cmake
 
+  PYBIND11_VERSION="2.2.4"
   wget https://github.com/pybind/pybind11/archive/v${PYBIND11_VERSION}.tar.gz
   tar xf v${PYBIND11_VERSION}.tar.gz
   pybind11_DIR=pybind11-${PYBIND11_VERSION}
