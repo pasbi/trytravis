@@ -19,8 +19,11 @@ script:
       ;;
     "windows")
       echo "build windows"
-      - choco install -y msys2
-      - /c/tools/msys64/msys2_shell.cmd -defterm -mingw64 -no-start -full-path -here -c './hello-msys.sh'
+      choco install -y msys2
+      ls /c/
+      ls /c/tools/
+      ls /c/tools/msys64/
+      /c/tools/msys64/msys2_shell.cmd -defterm -mingw64 -no-start -full-path -here -c './hello-msys.sh'
       ;;
     "osx")
       echo "build osx"
