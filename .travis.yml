@@ -9,58 +9,15 @@ jobs:
     - os: linux
       dist: bionic
     - os: windows
-
-install:
-  - echo "before install $TRAVIS_DIST -- $TRAVIS_OS_NAME"
-  - |
-    case "$TRAVIS_OS_NAME" in
-    "linux")
-      echo "install dependencies @linux"
-      sudo apt upgrade
-      sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev
-                          libgl-dev python3-dev
-      case "$TRAVIS_DIST" in
-      "xenial")
-        sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
-        sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-xenial
-        sudo apt update -y
-        sudo apt install -y qt512tools qt512translations qt512svg qt512base qt512imageformats
-        QT_PREFIX=/opt/qt512
-        ;;
-      "bionic")
-        ;;
-      "disco" | "eaon")
-        sudo apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qt5-default
-                            libqt5svg5-dev qttools5-dev qttools5-dev-tools pybind11-dev
-        ;;
-      esac
-      sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
-      wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
-      tar xf cmake-3.14.5-Linux-x86_64.tar.gz
-      cmake_3_14=$(pwd)/cmake-3.14.5-Linux-x86_64/bin/cmake
-      ;;
-    "windows")
-      echo "install dependencies @windows"
-      ;;
-    "osx")
-      echo "install dependencies @osx"
-    esac
-                            
+                 
 script:
   - mkdir build
   - cd build
   - |
     case "$TRAVIS_OS_NAME" in
     "linux")
-      echo "build linux"
-      $cmake_3_14 -GNinja \
-                  -DCMAKE_BUILD_TYPE=Release \
-                  -DCMAKE_CXX_COMPILER=g++ \
-                  -DQT_QM_PATH=/opt/qt512/translations \
-                  -DCMAKE_PREFIX_PATH="$QT_PREFIX" \
-                  -DCMAKE_INSTALL_PREFIX=/usr \
-                  ..
-      ninja 
+      # assume a ubuntu distribution
+      ./build-ubuntu.sh
       ;;
     "windows")
       echo "build windows"
