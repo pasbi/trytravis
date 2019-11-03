@@ -22,7 +22,8 @@ case "$dist" in
   sudo apt install -y qt512tools qt512translations qt512svg \
                       qt512base qt512imageformats
 
-  COMPILER=g++-8
+  CXX_COMPILER=g++-8
+  C_COMPILER=gcc-8
   QT_PREFIX="/opt/qt512"
   QT_QM_PATH="/usr/share/qt5/translations/"
   ;;
@@ -32,7 +33,8 @@ case "$dist" in
                       qtbase5-dev-tools qt5-default \
                       libqt5svg5-dev qttools5-dev \
                       qttools5-dev pybind11-dev
-  COMPILER=g++
+  CXX_COMPILER=g++
+  C_COMPILER=gcc
   ;;
 esac
 sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
@@ -49,7 +51,8 @@ mkdir build
 cd build
 $cmake_3_14 -GNinja \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER="$COMPILER" \
+            -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DCMAKE_C_COMPILER="$C_COMPILER" \
             -DQT_QM_PATH="$QT_QM_PATH" \
             -DCMAKE_PREFIX_PATH="$QT_PREFIX" \
             -DCMAKE_INSTALL_PREFIX=/usr \
