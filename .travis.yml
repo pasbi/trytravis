@@ -1,5 +1,6 @@
 compiler: gcc
 sudo: require
+language: cpp
 
 jobs:
   include:
@@ -9,39 +10,71 @@ jobs:
       dist: bionic
     - os: windows
 
-before_install:
-  - echo "before install $TRAVIS_DIST -- $TRAVIS_OS_NAME"
-  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
-  - sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-xenial
-  - sudo apt update
-  - sudo apt-get update -qq
-
 install:
-  - echo "install"
-  - sudo apt install ninja-build
-  - sudo apt-get install -y zlib1g-dev libssl-dev libffi-dev
-                            qt512tools qt512translations qt512svg qt512base
-                            qt512imageformats libgl-dev python3-dev
-                            libpoppler-qt5-dev g++-8 libkf5itemmodels-dev
+  - echo "before install $TRAVIS_DIST -- $TRAVIS_OS_NAME"
+  - |
+    case "$TRAVIS_OS_NAME" in
+    "linux")
+      echo "install dependencies @linux"
+      if [ "$TRAVIS_DIST" = "xenial" ]; then
+        sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
+        sudo apt-add-repository -y ppa:beineri/opt-qt-5.12.3-xenial
+      fi
+      sudo apt update -y
+      sudo apt upgrade
+      sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev
+                          libgl-dev python3-dev
+      if [ "$TRAVIS_DIST" = "xenial" ]; then
+        sudo apt install -y qt512tools qt512translations qt512svg qt512base qt512imageformats
+      else
+        sudo apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qt5-default
+                            libqt5svg5-dev qttools5-dev qttools5-dev-tools pybind11-dev
+      fi
+      sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
+      if [ "$TRAVIS_DIST" = "xenial" ]; then
+        wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
+        tar xf cmake-3.14.5-Linux-x86_64.tar.gz
+        cmake_3_14=$(pwd)/cmake-3.14.5-Linux-x86_64/bin/cmake
+      ;;
+    "windows")
+      echo "install dependencies @windows"
+      ;;
+    "osx")
+      echo "install dependencies @osx"
+    esac
                             
-  - wget https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-Linux-x86_64.tar.gz
-  - tar xf cmake-3.14.5-Linux-x86_64.tar.gz
-  - cmake_3_14=$(pwd)/cmake-3.14.5-Linux-x86_64/bin/cmake
-
-after_install:
-  - echo "after install"
-
 script:
   - mkdir build
   - cd build
-  - $cmake_3_14 -G"Ninja"
-                -DCMAKE_BUILD_TYPE=Release
-                -DCMAKE_CXX_COMPILER=g++
-                -DQT_QM_PATH=/opt/qt512/translations
-                -DCMAKE_PREFIX_PATH=/opt/qt512
-                -DCMAKE_INSTALL_PREFIX=/usr
-                ..
-  - ninja 
+  - |
+    case "$TRAVIS_OS_NAME" in
+    "linux")
+      echo "build linux"
+      if [ "$TRAVIS_DIST" = "xenial" ]; then
+        $cmake_3_14 -GNinja \
+                    -DCMAKE_BUILD_TYPE=Release \
+                    -DCMAKE_CXX_COMPILER=g++ \
+                    -DQT_QM_PATH=/opt/qt512/translations \
+                    -DCMAKE_PREFIX_PATH=/opt/qt512 \
+                    -DCMAKE_INSTALL_PREFIX=/usr \
+                    ..
+      else
+        cmake -GNinja \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_CXX_COMPILER=g++ \
+              -DQT_QM_PATH=/opt/qt512/translations \
+              -DCMAKE_INSTALL_PREFIX=/usr \
+              ..
+      fi
+      ninja 
+      ;;
+    "windows")
+      echo "build windows"
+      ;;
+    "osx")
+      echo "build osx"
+      ;;
+    esac
 
 branches:
   except:
