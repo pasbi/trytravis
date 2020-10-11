@@ -77,7 +77,3 @@ after_success:
       ;;
     esac
 
-artifacts:
-  - path:
-    build/ommpfritt
-
