@@ -1,12 +1,10 @@
-cmake_minimum_required (VERSION 2.8.4)  # warnings vanish with Version > 3.3
+cmake_minimum_required (VERSION 3.3)  # warnings vanish with Version > 3.3
 
-project (ommpfritt)
+project (ommpfritt VERSION 0.1.0)
 
 set (CMAKE_AUTOMOC ON)
 set (CMAKE_AUTORCC ON)
 set (CMAKE_AUTOUIC ON)
-set (OMMPFRITT_VERSION_MAJOR 1)
-set (OMMPFRITT_VERSION_MINOR 0)
 set (QT_QM_PATH CACHE PATH
     "path where to find the Qt translation files (qt_en.qm, qtbase_de.qm, etc.")
 

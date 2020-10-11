@@ -77,7 +77,7 @@ after_success:
       ;;
     esac
 
-    #artifacts:
-    #  - path:
-    #      build/
+artifacts:
+  - path:
+    build/ommpfritt
 
