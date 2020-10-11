@@ -5,5 +5,14 @@ gcc --version
 g++ --version
 cmake --version
 pacman --version
+pacman -Ss ninja
 ninja --version
+
+ls
+build_dir="build"
+cmake -GNinja \
+  -B "$build_dir" \
+  -S .
+
+cmake --build "$build_dir"
 

@@ -73,7 +73,6 @@ esac
 
 sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
 
-
 if [ -d build ]; then
   rm -r build
 fi
