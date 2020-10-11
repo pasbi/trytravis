@@ -5,9 +5,9 @@ pacman -sS poppler
 pacman -sS python
 
 pacman -S mingw-w64-x86_64-ninja \
-          mingw-w64-x86-64-qt5 \
-          mingw-w64-x86-64-poppler \
-          mingw-w64-x86-64-python
+          mingw-w64-x86_64-qt5 \
+          mingw-w64-x86_64-poppler \
+          mingw-w64-x86_64-python
 
 echo "\n\nQt content begin\n======="
 pacman -Ql mingw-w64-qt5
