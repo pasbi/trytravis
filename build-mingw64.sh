@@ -1,5 +1,7 @@
 echo "Hello from the try travis build script for the MinGW64 platform"
 
+set -e
+
 pacman --noconfirm -S \
     mingw-w64-x86_64-ninja \
     mingw-w64-x86_64-qt5 \
@@ -12,7 +14,7 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-zlib \
     mingw-w64-x86_64-python-pytest
 
-pacman -Q
+pacman -Ql mingw-w64-x86_64-qt5
 
 build_dir="build"
 cmake -GNinja \
