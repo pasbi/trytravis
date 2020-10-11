@@ -20,7 +20,7 @@ build_dir="build"
 cmake -GNinja \
   -B "$build_dir" \
   -S . \
-  -DQT_QM_PATH="/mingw64/usr/share/qt/translations/"
+  -DQT_QM_PATH="/mingw64/share/qt5/translations/"
 
 cmake --build "$build_dir"
 # C:\tools\msys64\mingw64
