@@ -12,7 +12,8 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-openssl \
     mingw-w64-x86_64-libffi \
     mingw-w64-x86_64-zlib \
-    mingw-w64-x86_64-python-pytest
+    mingw-w64-x86_64-python-pytest \
+    mingw-w64-x86_64-dlfcn
 
 pacman -Ql mingw-w64-x86_64-qt5
 
