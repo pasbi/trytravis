@@ -79,7 +79,9 @@ deploy:
   provider: releases
   api_key:
     secure: FvwVlBt0Fgtgjom/7SFa0kR4TQVeufQc0QAF3KZOUZWPNxfu/A+0QIDXTRw3dhmZderI1QPYchgxW41ybOULzoOICHZ2eeBQfC57PAueyHNwVmK87mEKBlVy6dC7TrQNoqwJQNntA8IqcGisTLTEM31SJje5rLPfAwDfdFk1/l6uKO+cBbXx/wG3vmDuX5uz0vP4xqmwJaY8fa00cFxAydTaXAUu/hXtBGMnJBNXcQc55c20NsbHuUmTuKRixuZnUfp1rJ2L/DTDHOuqZuP7pde+CsIM2pLwVauYB5kCMpPctptNr98JXWpTX5Bx7piwyOdVyVwCoOmBiNvCd069cQQkJu3LuIWng+W0f5WHQU7YzVG/yk/XqENXo9L8bzK0xP6adsHcMz9Mzp+tUmgcnBnW8YaA/JfB5frr3dvgZ13X0iMZ2PYkXyT24LDBQajsUwSoSKvTUfDT/epXJF4zZEcSu+xizn6zHjrA1tVAUyjvCSIC7+bFcgT4NFgH2Qy4OFdpnfacmD7ZAIzRy3TY14/hLLFidoZeQj0Iwfnm12BqScGHY1Q6dqBb/vxuc3Ct9+BR1DT2VUwkxY85U+Ze9tWXBQQ0CtVnaU8omCSaUFwS0geyDmmyA0yDahnmrkY7uh1zZfvvjnuIAlCOCidtzgutd0gT9tkP2fKkwj23ejk=
-  file: build/ommpfritt
+  file:
+    - build/ommpfritt
+    - build/ommpfritt.exe
   on:
     repo: pasbi/trytravis
   skip_cleanup: 'true'
