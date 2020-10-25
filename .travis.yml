@@ -91,6 +91,7 @@ deploy:
   file:
     - build/ommpfritt
     - build/ommpfritt.exe
+    - build/ommpfritt-*-win64.exe
   on:
     repo: pasbi/trytravis
   skip_cleanup: 'true'
