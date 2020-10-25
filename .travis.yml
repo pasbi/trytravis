@@ -63,10 +63,22 @@ after_success:
   "linux")
     # assume a ubuntu distribution
     ./build/test/unit/ommpfritt_unit_test
+    echo "===="
+    git describe
+    pwd
+    ls
+    git status
+    echo "===="
     cp build/ommpfritt-*-Linux.sh build/ommpfritt-$(git describe)-Linux.sh
     ;;
   "windows")
     echo "skip test on windows"
+    echo "===="
+    git describe
+    pwd
+    ls
+    git status
+    echo "===="
     cp build/ommpfritt-*-win64.exe build/ommpfritt-$(git describe)-win64.exe
     ;;
   "osx")
