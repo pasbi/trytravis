@@ -13,12 +13,11 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-libffi \
     mingw-w64-x86_64-zlib \
     mingw-w64-x86_64-python-pytest \
-    mingw-w64-x86_64-dlfcn
-
-pacman -Ql mingw-w64-x86_64-qt5
+    mingw-w64-x86_64-dlfcn \
+    mingw-w64-x86_64-nsis
 
 build_dir="build"
-cmake -GNinja \
+cmake -G"Unix Makefiles" \
   -B "$build_dir" \
   -S . \
   -DQT_QM_PATH="/mingw64/share/qt5/translations/"
