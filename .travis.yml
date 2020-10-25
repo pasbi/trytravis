@@ -68,6 +68,9 @@ after_success:
     ./build/test/unit/ommpfritt_unit_test
     ;;
   "windows")
+    echo "======"
+    find build
+    echo "======"
     echo "skip test windows"
     ;;
   "osx")
@@ -92,6 +95,7 @@ deploy:
     - build/ommpfritt
     - build/ommpfritt.exe
     - build/ommpfritt-*-win64.exe
+    - build/ommpfritt-0.1.0-win64.exe
   on:
     repo: pasbi/trytravis
   skip_cleanup: 'true'
