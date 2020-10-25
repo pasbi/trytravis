@@ -63,33 +63,9 @@ after_success:
   "linux")
     # assume a ubuntu distribution
     ./build/test/unit/ommpfritt_unit_test
-    echo "===="
-    git describe
-    git describe b9926a7dada17537bc3f6913730aa20aaeac9bfe
-    git describe b9926
-    git describe $TRAVIS_COMMIT
-    git rev-parse HEAD
-    echo "Travis commit: $TRAVIS_COMMIT"
-    pwd
-    ls
-    git status
-    echo "===="
-    cp build/ommpfritt-*-Linux.sh build/ommpfritt-$(git describe)-Linux.sh
     ;;
   "windows")
     echo "skip test on windows"
-    echo "===="
-    git describe
-    git describe b9926a7dada17537bc3f6913730aa20aaeac9bfe
-    git describe b9926
-    git describe $TRAVIS_COMMIT
-    git rev-parse HEAD
-    echo "Travis commit: $TRAVIS_COMMIT"
-    pwd
-    ls
-    git status
-    echo "===="
-    cp build/ommpfritt-*-win64.exe build/ommpfritt-$(git describe)-win64.exe
     ;;
   "osx")
     echo "skip test osx"
@@ -103,8 +79,8 @@ deploy:
   file:
     - build/ommpfritt
     - build/ommpfritt.exe
-    - build/ommpfritt-$(git describe)-win64.exe
-    - build/ommpfritt-$(git describe)-Linux.sh
+    - build/ommpfritt-0.1.0-win64.exe
+    - build/ommpfritt-0.1.0-Linux.sh
   on:
     repo: pasbi/trytravis
   skip_cleanup: 'true'
