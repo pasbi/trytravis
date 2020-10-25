@@ -73,12 +73,7 @@ esac
 
 sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
 
-if [ -d build ]; then
-  rm -r build
-fi
-mkdir build
-
-cd build
+build_directory="build"
 $cmake -GNinja \
        -DCMAKE_BUILD_TYPE=Release \
        -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
@@ -86,6 +81,8 @@ $cmake -GNinja \
        -DQT_QM_PATH="$QT_QM_PATH" \
        -DCMAKE_PREFIX_PATH="$QT_PREFIX" \
        -DCMAKE_INSTALL_PREFIX=/usr \
-       ..
+       -S . \
+       -B "$build_directory"
 
-ninja
+cmake --build "$build_directory" --target package
+

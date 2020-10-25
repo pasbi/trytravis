@@ -64,3 +64,6 @@ target_link_libraries(ommpfritt libommpfritt)
 
 install(TARGETS ommpfritt RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib/static)
 install(TARGETS libommpfritt RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib/static)
+
+include(CPack)
+

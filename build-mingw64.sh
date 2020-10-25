@@ -23,5 +23,5 @@ cmake -GNinja \
   -S . \
   -DQT_QM_PATH="/mingw64/share/qt5/translations/"
 
-cmake --build "$build_dir"
-# C:\tools\msys64\mingw64
+cmake --build "$build_dir" --target package
+
