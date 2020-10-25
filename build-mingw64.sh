@@ -14,7 +14,8 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-zlib \
     mingw-w64-x86_64-python-pytest \
     mingw-w64-x86_64-dlfcn \
-    mingw-w64-x86_64-nsis
+    mingw-w64-x86_64-nsis \
+    make
 
 build_dir="build"
 cmake -G"Unix Makefiles" \

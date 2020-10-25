@@ -76,14 +76,13 @@ after_success:
   esac
 
 after_failure:
-- |
-  echo "Build failed"
-  echo "XXXX pwd:"
-  pwd
-  echo "XXXX ls:"
-  ls
-  echo "CMakeOutput.log:"
-  cat C:/Users/travis/build/pasbi/trytravis/build/CMakeFiles/CMakeOutput.log 
+  - echo "Build failed"
+  - echo "XXXX pwd:"
+  - pwd
+  - echo "XXXX ls:"
+  - ls
+  - echo "CMakeOutput.log:"
+  - cat C:/Users/travis/build/pasbi/trytravis/build/CMakeFiles/CMakeOutput.log 
 
 deploy:
   provider: releases
