@@ -62,30 +62,17 @@ after_success:
   case "$TRAVIS_OS_NAME" in
   "linux")
     # assume a ubuntu distribution
-    echo "======"
-    find build
-    echo "======"
     ./build/test/unit/ommpfritt_unit_test
+    cp build/ommpfritt-*-Linux.sh build/ommpfritt-$(git describe)-Linux.sh
     ;;
   "windows")
-    echo "======"
-    find build
-    echo "======"
-    echo "skip test windows"
+    echo "skip test on windows"
+    cp build/ommpfritt-*-win64.exe build/ommpfritt-$(git describe)-win64.exe
     ;;
   "osx")
     echo "skip test osx"
     ;;
   esac
-
-after_failure:
-  - echo "Build failed"
-  - echo "XXXX pwd:"
-  - pwd
-  - echo "XXXX ls:"
-  - ls
-  - echo "CMakeOutput.log:"
-  - cat C:/Users/travis/build/pasbi/trytravis/build/CMakeFiles/CMakeOutput.log 
 
 deploy:
   provider: releases
@@ -94,8 +81,8 @@ deploy:
   file:
     - build/ommpfritt
     - build/ommpfritt.exe
-    - build/ommpfritt-*-win64.exe
-    - build/ommpfritt-0.1.0-win64.exe
+    - build/ommpfritt-$(git describe)-win64.exe
+    - build/ommpfritt-$(git describe)-Linux.sh
   on:
     repo: pasbi/trytravis
   skip_cleanup: 'true'
