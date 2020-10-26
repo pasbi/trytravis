@@ -17,6 +17,11 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-nsis \
     make
 
+git clone https://gitlab.com/inkscape/lib2geom
+cd lib2geom
+cmake -S . -B build-lib2geom
+cmake --build build-lib2geom --target install
+
 build_dir="build"
 cmake -G"Unix Makefiles" \
   -B "$build_dir" \

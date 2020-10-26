@@ -25,6 +25,7 @@ ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 find_package(Qt5Widgets CONFIG REQUIRED)
 find_package(Qt5Svg REQUIRED)
 find_package(Qt5 COMPONENTS LinguistTools)
+find_package(2Geom REQUIRED)
 
 find_package(KF5ItemModels REQUIRED)
 
@@ -56,6 +57,7 @@ target_link_libraries(libommpfritt -lpthread -lm -ldl)
 target_link_libraries(ommpfritt -lpthread -lm -ldl)
 target_link_libraries(libommpfritt KF5ItemModels)
 target_link_libraries(ommpfritt KF5ItemModels)
+target_link_libraries(libommpfritt 2Geom::2geom)
 
 add_subdirectory(src)
 add_subdirectory(test)
