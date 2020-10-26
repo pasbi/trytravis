@@ -18,9 +18,10 @@ pacman --noconfirm -S \
     make
 
 git clone https://gitlab.com/inkscape/lib2geom
-cd lib2geom
-cmake -S . -B build-lib2geom
+cmake -S lib2geom -B build-lib2geom
 cmake --build build-lib2geom --target install
+echo "lib2geom CMAKEOUTPUT.log:"
+cat build-lib2geom/CMakeOutput.log
 
 build_dir="build"
 cmake -G"Unix Makefiles" \
