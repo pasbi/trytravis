@@ -22,6 +22,7 @@ cmake -S lib2geom -B build-lib2geom
 cmake --build build-lib2geom --target install
 echo "lib2geom CMAKEOUTPUT.log:"
 cat build-lib2geom/CMakeFiles/CMakeOutput.log
+exit 1
 
 build_dir="build"
 cmake -G"Unix Makefiles" \
