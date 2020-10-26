@@ -1,6 +1,6 @@
 echo "Hello from the try travis build script for the MinGW64 platform"
 
-set -e
+# set -e
 
 pacman --noconfirm -S \
     mingw-w64-x86_64-ninja \
@@ -21,7 +21,7 @@ git clone https://gitlab.com/inkscape/lib2geom
 cmake -S lib2geom -B build-lib2geom
 cmake --build build-lib2geom --target install
 echo "lib2geom CMAKEOUTPUT.log:"
-cat build-lib2geom/CMakeOutput.log
+cat build-lib2geom/CMakeFiles/CMakeOutput.log
 
 build_dir="build"
 cmake -G"Unix Makefiles" \
