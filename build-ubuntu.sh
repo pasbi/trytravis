@@ -74,6 +74,12 @@ esac
 sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
 
 git clone https://gitlab.com/inkscape/lib2geom
+echo "CLONED."
+pwd
+echo "ls"
+ls
+echo "LS lib2geom"
+ls lib2geom
 cmake -S lib2geom -B build-lib2geom
 cmake --build build-lib2geom --target install
 
