@@ -79,8 +79,15 @@ echo ">>>> gtest:"
 ls /usr/src/gtest
 echo "CONFIGURE gtest:"
 sudo $cmake -S /usr/src/gtest -B /usr/src/gtest/build
+echo "make help:"
+make help
 echo "BUILD gtest:"
-sudo $cmake --build /usr/src/gtest/build/ --target install
+sudo $cmake --build /usr/src/gtest/build/
+sudo cp /usr/src/gtest/build/libgtest* /usr/lib/
+
+sudo mkdir /usr/local/lib/gtest
+sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
+sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 
 git clone https://gitlab.com/inkscape/lib2geom
 echo "CONFIGURE LIB2GEOM"

@@ -28,7 +28,8 @@ git clone https://gitlab.com/inkscape/lib2geom
 echo "CONFIGURE LIB2GEOM:"
 cmake -G"Unix Makefiles" \
   -B build-lib2geom \
-  -S lib2geom
+  -S lib2geom \
+  -DCMAKE_INSTALL_PREFIX=install-lib2geom
 
 echo "BUILD LIB2GEOM:"
 cmake --build build-lib2geom --target install
@@ -39,7 +40,8 @@ cmake -G"Unix Makefiles" \
   -B "$build_dir" \
   -S . \
   -DCMAKE_BUILD_TYPE=Release \
-  -DQT_QM_PATH="/mingw64/share/qt5/translations/"
+  -DQT_QM_PATH="/mingw64/share/qt5/translations/" \
+  -DCMAKE_PREFIX_PATH="install-lib2geom/lib/cmake"
 
 echo "CMAKEOUTPUT.log:"
 cat build/CMakeFiles/CMakeOutput.log
