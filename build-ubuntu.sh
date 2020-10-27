@@ -15,7 +15,10 @@ sudo apt remove mysql-client-5.7 mysql-server-5.7
 sudo apt upgrade -y
 sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
                     libgl-dev python3-dev libdouble-conversion-dev \
-                    libboost-all-dev libgl-dev libgtest-dev
+                    libboost-all-dev libgl-dev libgtest-dev \
+                    libgtk-3-dev libgtkmm-2.4-dev libgsl-dev \
+                    libpoppler-qt5-dev libkf5itemmodels-dev cython
+
 case "$dist" in
 "xenial" | "bionic")
   sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
@@ -72,7 +75,12 @@ case "$dist" in
   ;;
 esac
 
-sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
+echo ">>>> gtest:"
+ls /usr/src/googletest
+echo "CONFIGURE gtest:"
+sudo $cmake -S /usr/src/googletest -B /usr/src/googletest/build
+echo "BUILD gtest:"
+sudo $cmake --build /usr/src/googletest/build/ --target install
 
 git clone https://gitlab.com/inkscape/lib2geom
 echo "CONFIGURE LIB2GEOM"
