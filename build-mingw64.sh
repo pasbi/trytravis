@@ -3,6 +3,7 @@ echo "Hello from the try travis build script for the MinGW64 platform"
 # set -e
 
 pacman --noconfirm -S \
+    make \
     mingw-w64-x86_64-ninja \
     mingw-w64-x86_64-qt5 \
     mingw-w64-x86_64-poppler \
@@ -15,7 +16,8 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-python-pytest \
     mingw-w64-x86_64-dlfcn \
     mingw-w64-x86_64-nsis \
-    make
+    mingw-w64-x86_64-boost \
+    mingw-w64-x86_64-double-conversion
 
 git clone https://gitlab.com/inkscape/lib2geom
 cmake -G"Unix Makefiles" \
