@@ -83,7 +83,7 @@ $cmake -GNinja \
   -D2GEOM_TESTING=OFF
 
 echo "BUILD LIB2GEOM"
-$cmake --build build-lib2geom --target install
+sudo $cmake --build build-lib2geom --target install
 
 echo "CONFIGURE omm"
 build_directory="build"
