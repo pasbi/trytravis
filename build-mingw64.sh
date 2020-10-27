@@ -17,16 +17,22 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-dlfcn \
     mingw-w64-x86_64-nsis \
     mingw-w64-x86_64-boost \
-    mingw-w64-x86_64-double-conversion
+    mingw-w64-x86_64-double-conversion \
+    mingw-w64-x86_64-gsl \
+    mingw-w64-x86_64-cython \
+    mingw-w64-x86_64-gtk3 \
+    mingw-w64-x86_64-gtkmm3 \
+    mingw-w64-x86_64-gtest
 
 git clone https://gitlab.com/inkscape/lib2geom
+echo "CONFIGURE LIB2GEOM:"
 cmake -G"Unix Makefiles" \
   -B build-lib2geom \
   -S lib2geom
 
+echo "BUILD LIB2GEOM:"
 cmake --build build-lib2geom --target install
-echo "lib2geom CMAKEOUTPUT.log:"
-cat build-lib2geom/CMakeFiles/CMakeOutput.log
+echo "EXIT FOR NOW."
 exit 1
 
 build_dir="build"

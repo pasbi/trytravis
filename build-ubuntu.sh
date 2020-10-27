@@ -14,7 +14,8 @@ sudo apt update -y
 sudo apt remove mysql-client-5.7 mysql-server-5.7
 sudo apt upgrade -y
 sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
-                    libgl-dev python3-dev libdouble-conversion-dev libboost-all-dev
+                    libgl-dev python3-dev libdouble-conversion-dev \
+                    libboost-all-dev libgl-dev libgtest-dev
 case "$dist" in
 "xenial" | "bionic")
   sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
@@ -74,12 +75,14 @@ esac
 sudo apt install -y libpoppler-qt5-dev libkf5itemmodels-dev
 
 git clone https://gitlab.com/inkscape/lib2geom
-cmake --version
-$cmake --version
+echo "CONFIGURE LIB2GEOM"
 $cmake -GNinja \
   -S lib2geom \
   -B build-lib2geom
+echo "BUILD LIB2GEOM"
 $cmake --build build-lib2geom --target install
+echo "EXIT FOR NOW."
+exit 1
 
 build_directory="build"
 $cmake -GNinja \
