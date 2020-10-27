@@ -41,6 +41,9 @@ cmake -G"Unix Makefiles" \
   -DCMAKE_BUILD_TYPE=Release \
   -DQT_QM_PATH="/mingw64/share/qt5/translations/"
 
+echo "CMAKEOUTPUT.log:"
+cat build/CMakeFiles/CMakeOutput.log
+
 echo "BUILD omm"
 cmake --build "$build_dir" --target package
 

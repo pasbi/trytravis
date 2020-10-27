@@ -76,11 +76,11 @@ case "$dist" in
 esac
 
 echo ">>>> gtest:"
-ls /usr/src/googletest
+ls /usr/src/gtest
 echo "CONFIGURE gtest:"
-sudo $cmake -S /usr/src/googletest -B /usr/src/googletest/build
+sudo $cmake -S /usr/src/gtest -B /usr/src/gtest/build
 echo "BUILD gtest:"
-sudo $cmake --build /usr/src/googletest/build/ --target install
+sudo $cmake --build /usr/src/gtest/build/ --target install
 
 git clone https://gitlab.com/inkscape/lib2geom
 echo "CONFIGURE LIB2GEOM"
