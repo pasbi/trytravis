@@ -21,15 +21,15 @@ pacman --noconfirm -S \
     mingw-w64-x86_64-gsl \
     mingw-w64-x86_64-cython \
     mingw-w64-x86_64-gtk3 \
-    mingw-w64-x86_64-gtkmm3 \
-    mingw-w64-x86_64-gtest
+    mingw-w64-x86_64-gtkmm3
 
 git clone https://gitlab.com/inkscape/lib2geom
 echo "CONFIGURE LIB2GEOM:"
 cmake -G"Unix Makefiles" \
   -B build-lib2geom \
   -S lib2geom \
-  -DCMAKE_INSTALL_PREFIX=install-lib2geom
+  -DCMAKE_INSTALL_PREFIX=install-lib2geom \
+  -D2GEOM_TESTING=OFF
 
 echo "BUILD LIB2GEOM:"
 cmake --build build-lib2geom --target install

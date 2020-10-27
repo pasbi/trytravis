@@ -15,7 +15,7 @@ sudo apt remove mysql-client-5.7 mysql-server-5.7
 sudo apt upgrade -y
 sudo apt install -y ninja-build zlib1g-dev libssl-dev libffi-dev \
                     libgl-dev python3-dev libdouble-conversion-dev \
-                    libboost-all-dev libgl-dev libgtest-dev \
+                    libboost-all-dev libgl-dev \
                     libgtk-3-dev libgtkmm-2.4-dev libgsl-dev \
                     libpoppler-qt5-dev libkf5itemmodels-dev cython
 
@@ -75,25 +75,13 @@ case "$dist" in
   ;;
 esac
 
-echo ">>>> gtest:"
-ls /usr/src/gtest
-echo "CONFIGURE gtest:"
-sudo $cmake -S /usr/src/gtest -B /usr/src/gtest/build
-echo "make help:"
-make help
-echo "BUILD gtest:"
-sudo $cmake --build /usr/src/gtest/build/
-sudo cp /usr/src/gtest/build/libgtest* /usr/lib/
-
-sudo mkdir /usr/local/lib/gtest
-sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
-sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
-
 git clone https://gitlab.com/inkscape/lib2geom
 echo "CONFIGURE LIB2GEOM"
 $cmake -GNinja \
   -S lib2geom \
-  -B build-lib2geom
+  -B build-lib2geom \
+  -D2GEOM_TESTING=OFF
+
 echo "BUILD LIB2GEOM"
 $cmake --build build-lib2geom --target install
 
