@@ -81,9 +81,8 @@ $cmake -GNinja \
   -B build-lib2geom
 echo "BUILD LIB2GEOM"
 $cmake --build build-lib2geom --target install
-echo "EXIT FOR NOW."
-exit 1
 
+echo "CONFIGURE omm"
 build_directory="build"
 $cmake -GNinja \
        -DCMAKE_BUILD_TYPE=Release \
@@ -95,5 +94,6 @@ $cmake -GNinja \
        -S . \
        -B "$build_directory"
 
+echo "BUILD omm"
 $cmake --build "$build_directory" --target package
 

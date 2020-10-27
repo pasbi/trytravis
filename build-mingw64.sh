@@ -32,14 +32,15 @@ cmake -G"Unix Makefiles" \
 
 echo "BUILD LIB2GEOM:"
 cmake --build build-lib2geom --target install
-echo "EXIT FOR NOW."
-exit 1
 
+echo "CONFIGURE omm"
 build_dir="build"
 cmake -G"Unix Makefiles" \
   -B "$build_dir" \
   -S . \
+  -DCMAKE_BUILD_TYPE=Release \
   -DQT_QM_PATH="/mingw64/share/qt5/translations/"
 
+echo "BUILD omm"
 cmake --build "$build_dir" --target package
 
