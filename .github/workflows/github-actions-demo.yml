@@ -1,17 +1,35 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  Build-Focal-Travis:
+    runs-on: ubuntu-20.04
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: update
+        run: sudo apt-get update && sudo apt-get upgrade
+      - name: install dependencies
+        run: sudo apt-get install -y
+             g++ qt5-default \
+             python3-dev ninja-build zlib1g-dev libssl-dev libffi-dev libgl-dev \
+             libboost-all-dev libdouble-conversion-dev libgsl-dev libcairo2-dev \
+             libpoppler-qt5-dev libkf5itemmodels-dev imagemagick
+      - name: clone lib2geom
+        run: git clone https://gitlab.com/inkscape/lib2geom.git
+      - name: checkout lib2geom
+        run: cd lib2geom; git checkout 37876ed4; cd ..
+      - name: configure lib2geom
+        run: cmake -S lib2geom
+                   -B build-lib2geom
+                   -GNinja
+                   -D2GEOM_TESTING=OFF
+                   -DCMAKE_INSTALL_PREFIX=install
+      - name: build lib2geom
+        run: cmake --build build-lib2geom --target install
+      - name: configure omm
+        run: cmake -S .
+                   -B build
+                   -GNinja
+                   -DCMAKE_BUILD_TYPE=Release
+                   -DQT_QM_PATH=/usr/share/qt5/translations/
+                   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      - name: build omm
+        run: cmake --build build --target package
